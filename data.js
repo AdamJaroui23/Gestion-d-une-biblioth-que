@@ -92,6 +92,23 @@ function getHighlyRatedBooks(books) {
     });
 }
 
+function getBestRatedBook(books) {
+    let bestBook = books[0];
+    let bestAverage = 0;
+
+    books.forEach(book => {
+        const total = book.reviews.reduce((sum, review) => sum + review.rating, 0);
+        const average = total / book.reviews.length;
+        if (average > bestAverage) {
+            bestAverage = average;
+            bestBook = book;
+        }
+    });
+
+    return bestBook;
+}
+
 //console.log(getBooksByCategory(books))
 //console.log(getReaderReviews(books).join("\n"));
-console.log(getHighlyRatedBooks(books));
+//console.log(getHighlyRatedBooks(books));
+console.log(getBestRatedBook(books))
