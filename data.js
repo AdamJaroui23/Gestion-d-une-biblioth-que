@@ -59,4 +59,11 @@ const books = [
     }
 ];
 
+let prompt = require("prompt-sync")();
 
+function getBooksByCategory(books) {
+    let category = prompt("Donner la catégorie : ")
+    return books.filter(book => book.category === category)
+}
+
+console.log(getBooksByCategory(books))
