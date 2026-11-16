@@ -81,5 +81,17 @@ function getReaderReviews(books) {
     return results;
 }
 
+function getHighlyRatedBooks(books) {
+    return books.filter(book => {
+        let total = 0;
+        book.reviews.forEach(review => {
+            total += review.rating;
+        });
+
+        return total / book.reviews.length >= 4.5;
+    });
+}
+
 //console.log(getBooksByCategory(books))
-console.log(getReaderReviews(books).join("\n"));
+//console.log(getReaderReviews(books).join("\n"));
+console.log(getHighlyRatedBooks(books));
