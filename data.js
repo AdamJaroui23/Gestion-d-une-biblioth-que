@@ -66,4 +66,20 @@ function getBooksByCategory(books) {
     return books.filter(book => book.category === category)
 }
 
-console.log(getBooksByCategory(books))
+function getReaderReviews(books) {
+    const reader = prompt("Donner le nom du lecteur : ");
+    const results = [];
+
+    books.forEach(book => {
+        book.reviews.forEach(review => {
+            if (review.reader === reader) {
+                results.push(`${book.title} - rating: ${review.rating}`);
+            }
+        });
+    });
+
+    return results;
+}
+
+//console.log(getBooksByCategory(books))
+console.log(getReaderReviews(books).join("\n"));
